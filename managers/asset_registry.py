@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional, Tuple
 
+from config import DEFAULT_COMFYUI_URL
 from models.asset import AssetRecord
 
 logger = logging.getLogger("MCP_Server")
@@ -23,7 +24,7 @@ class AssetRegistry:
     making the system robust to URL changes (e.g., different hostnames).
     """
     
-    def __init__(self, ttl_hours: int = 24, comfyui_base_url: str = "http://localhost:8188"):
+    def __init__(self, ttl_hours: int = 24, comfyui_base_url: str = DEFAULT_COMFYUI_URL):
         self._assets: Dict[str, AssetRecord] = {}  # asset_id -> AssetRecord
         self._asset_key_to_id: Dict[str, str] = {}  # (filename, subfolder, type) -> asset_id
         self._lock = threading.RLock()  # Reentrant lock for thread safety

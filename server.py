@@ -13,6 +13,7 @@ import requests
 from mcp.server.fastmcp import FastMCP
 
 from comfyui_client import ComfyUIClient
+from config import DEFAULT_COMFYUI_URL
 from managers.asset_registry import AssetRegistry
 from managers.defaults_manager import DefaultsManager
 from managers.publish_manager import PublishConfig, PublishManager
@@ -35,7 +36,7 @@ WORKFLOW_DIR = Path(os.getenv("COMFY_MCP_WORKFLOW_DIR", str(Path(__file__).paren
 ASSET_TTL_HOURS = int(os.getenv("COMFY_MCP_ASSET_TTL_HOURS", "24"))
 
 # ComfyUI connection configuration
-COMFYUI_URL = os.getenv("COMFYUI_URL", "http://localhost:8188")
+COMFYUI_URL = os.getenv("COMFYUI_URL", DEFAULT_COMFYUI_URL)
 COMFYUI_MAX_RETRIES = 5  # Number of retry attempts
 COMFYUI_INITIAL_DELAY = 2  # Initial delay in seconds
 COMFYUI_MAX_DELAY = 16  # Maximum delay in seconds
@@ -216,7 +217,10 @@ if __name__ == "__main__":
         print("=" * 70 + "\n")
         logger.info("Starting MCP server with stdio transport (for MCP clients)")
         logger.info(f"ComfyUI verified at: {COMFYUI_URL}")
-        mcp.run(transport="stdio")
+        try:
+            mcp.run(transport="stdio")
+        except KeyboardInterrupt:
+            print("\n[*] Server stopped.")
     else:
         print("\n" + "=" * 70)
         print("[+] Server Ready".center(70))
@@ -227,4 +231,7 @@ if __name__ == "__main__":
         print("=" * 70 + "\n")
         logger.info("Starting MCP server with streamable-http transport on http://127.0.0.1:9000/mcp")
         logger.info(f"ComfyUI verified at: {COMFYUI_URL}")
-        mcp.run(transport="streamable-http")
+        try:
+            mcp.run(transport="streamable-http")
+        except KeyboardInterrupt:
+            print("\n[*] Server stopped.")

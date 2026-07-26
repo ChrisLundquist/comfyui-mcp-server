@@ -1222,7 +1222,7 @@ Create `~/.config/comfy-mcp/config.json` for persistent defaults:
 ### Environment Variables
 
 **Server Configuration:**
-- `COMFYUI_URL`: ComfyUI server URL (default: `http://localhost:8188`)
+- `COMFYUI_URL`: ComfyUI server URL (default: `http://localhost:8000`; standalone ComfyUI usually serves 8188)
 - `COMFY_MCP_WORKFLOW_DIR`: Workflow directory path (default: `./workflows`)
 - `COMFY_MCP_ASSET_TTL_HOURS`: Asset expiration time in hours (default: 24)
 

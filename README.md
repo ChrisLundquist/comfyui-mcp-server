@@ -29,6 +29,10 @@ cd <ComfyUI_dir>
 python main.py --port 8188
 ```
 
+The MCP server defaults to `http://localhost:8000`, which is where ComfyUI
+Desktop serves. If you launch standalone ComfyUI on the classic 8188 as above,
+point the server at it with `COMFYUI_URL=http://localhost:8188`.
+
 ### 3) Run the MCP server
 
 From the repository directory:
