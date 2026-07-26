@@ -48,7 +48,7 @@ Cursor automatically starts and manages the server process. No manual server sta
         "--stdio"
       ],
       "env": {
-        "COMFYUI_URL": "http://localhost:8188"
+        "COMFYUI_URL": "http://localhost:8000"
       }
     }
   }
@@ -60,7 +60,7 @@ Cursor automatically starts and manages the server process. No manual server sta
   - Windows: `"E:\\dev\\comfyui-mcp-server\\server.py"`
   - Mac/Linux: `"/path/to/comfyui-mcp-server/server.py"`
 - **Python Command**: You may need to use `python3` on Mac/Linux, or the full path to your Python executable
-- **ComfyUI URL**: The `COMFYUI_URL` environment variable should point to your ComfyUI instance (default: `http://localhost:8188`)
+- **ComfyUI URL**: The `COMFYUI_URL` environment variable should point to your ComfyUI instance (default: `http://localhost:8000`, which is what ComfyUI Desktop serves; set it to `http://localhost:8188` for a standalone `python main.py` install)
 
 **Steps:**
 1. Add the configuration above to Cursor's MCP config file (with your actual path)
@@ -94,7 +94,7 @@ Once connected, you'll have access to all MCP tools. See [README.md](README.md#a
 
 1. **Check Server is Running**: Make sure you've started the server with `python server.py`
 2. **Check Port**: Verify the server is listening on `http://127.0.0.1:9000/mcp`
-3. **Check ComfyUI**: Ensure ComfyUI is running on the configured port (default: 8188)
+3. **Check ComfyUI**: Ensure ComfyUI is running on the configured port (default: 8000)
 
 ### Server Not Starting (Command-based)
 
@@ -109,7 +109,7 @@ Once connected, you'll have access to all MCP tools. See [README.md](README.md#a
    pip install -r requirements.txt
    ```
 
-4. **Check ComfyUI**: Make sure ComfyUI is running on the configured port (default: 8188)
+4. **Check ComfyUI**: Make sure ComfyUI is running on the configured port (default: 8000)
 
 ### Tools Not Appearing
 

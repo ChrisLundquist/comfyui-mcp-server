@@ -12,6 +12,8 @@ from io import BytesIO
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from config import DEFAULT_COMFYUI_URL
+
 try:
     from PIL import Image
     PIL_AVAILABLE = True
@@ -294,7 +296,7 @@ def validate_comfyui_output_root(path: Path) -> bool:
     return False
 
 
-def detect_comfyui_output_root(project_root: Path, comfyui_url: str = "http://localhost:8188") -> Tuple[Optional[Path], List[Dict[str, Any]]]:
+def detect_comfyui_output_root(project_root: Path, comfyui_url: str = DEFAULT_COMFYUI_URL) -> Tuple[Optional[Path], List[Dict[str, Any]]]:
     """Detect ComfyUI output root directory (best-effort, tight candidates only).
     
     Detection order:
@@ -438,7 +440,7 @@ class PublishConfig:
         project_root: Optional[Union[str, Path]] = None,
         publish_root: Optional[Union[str, Path]] = None,
         comfyui_output_root: Optional[Union[str, Path]] = None,
-        comfyui_url: str = "http://localhost:8188"
+        comfyui_url: str = DEFAULT_COMFYUI_URL
     ):
         """Initialize publish configuration.
         
